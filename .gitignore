@@ -1,0 +1,5 @@
+.vagrant
+output-vagrant
+packer_cache
+
+*.exe
