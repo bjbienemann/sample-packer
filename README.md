@@ -7,17 +7,25 @@
 * Virtualbox 5.2.20
 
 Build vagrant image
-'''
+```
 ./packer build -only=virtualbox-iso template.json
-'''
+```
 
 Run instance virtualbox
-'''vagrant box add ubuntu-18.04.3 ./output/ubuntu-18.04.3.box'''
-'''vagrant init ubuntu-18.04.3'''
-'''vagrant up'''
+```
+vagrant box add ubuntu-18.04.3 ./output/ubuntu-18.04.3.box
+```
+```
+vagrant init ubuntu-18.04.3
+```
+```
+vagrant up
+```
 
 AWS
-'''./packer build -only=amazon-ebs -var-file=variables.json template.json'''
+```
+./packer build -only=amazon-ebs -var-file=variables.json template.json
+```
 
 ### References
 
