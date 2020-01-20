@@ -1,6 +1,13 @@
 {
     "builders": [
         {
+            "type": "vagrant",
+            "communicator": "ssh",
+            "source_path": "ubuntu/bionic64",
+            "provider": "virtualbox",
+            "add_force": true
+        },
+        {
             "type": "virtualbox-iso",
             "boot_command": [
                 "<esc><wait>",
@@ -28,7 +35,7 @@
                 "<enter><wait>"
             ],
             "boot_wait": "10s",
-            "disk_size": 81920,
+            "disk_size": 20480,
             "guest_os_type": "Ubuntu_64",
             "headless": false,
             "http_directory": "http",
