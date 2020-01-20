@@ -1,5 +1,15 @@
-.vagrant
-output-vagrant
-packer_cache
+.DS_Store
 
-*.exe
+iso/
+
+output-vagrant/
+output-virtualbox-iso/
+packer_cache/
+packer*
+
+variables.json
+.vagrant
+*.box
+*.vdi
+*.log
+

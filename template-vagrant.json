@@ -1,11 +1,11 @@
 {
     "builders": [
         {
+            "type": "vagrant",
             "communicator": "ssh",
-            "source_path": "ubuntu/trusty64",
+            "source_path": "ubuntu/bionic64",
             "provider": "virtualbox",
-            "add_force": true,
-            "type": "vagrant"
+            "add_force": true
         }
     ]
 }

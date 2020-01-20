@@ -45,38 +45,61 @@
             "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
             "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
             "virtualbox_version_file": ".vbox_version",
-            "vm_name": "packer-ubuntu-18.04.3-amd64",
+            "vm_name": "packer-ubuntu-18.04-amd64",
             "vboxmanage": [
-            [
-                "modifyvm",
-                "{{.Name}}",
-                "--memory",
-                "1024"
-            ],
-            [
-                "modifyvm",
-                "{{.Name}}",
-                "--cpus",
-                "1"
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--memory",
+                    "1024"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--cpus",
+                    "1"
+                ]
             ]
-            ]
+        },
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "region": "{{user `aws_region`}}",
+            "source_ami": "ami-02c8813f1ea04d4ab",
+            "instance_type": "t1.micro",
+            "ssh_username": "ubuntu",
+            "ami_name": "packer-ubuntu-18.04-amd64"
         }
     ],
     "provisioners": [
         {
             "type": "shell",
-            "script": "scripts/init.sh",
+            "only": ["virtualbox-iso"],
+            "script": "scripts/add-vagrant-user.sh",
             "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/update.sh",
+            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install-openjdk11.sh",
+            "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
         },
         {
             "type": "shell",
             "script": "scripts/cleanup.sh",
             "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
-        }    
+        }
     ],
-    "post-processors": [{
-      "type": "vagrant",
-      "compression_level": "8",
-      "output": "output/ubuntu-18.04.3.box"
-    }]
-  }
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "compression_level": "8",
+            "output": "output/ubuntu-18.04.3.box"
+        }
+    ]
+}
