@@ -12,4 +12,4 @@ sudo systemctl start jenkins
 
 #Verify status jenkinhs service
 #sudo systemctl status jenkins
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword | cat <(echo -n "initialAdminPassword: ") -
