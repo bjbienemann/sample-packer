@@ -5,3 +5,8 @@ echo 'APT::Periodic::Enable "0";' >> /etc/apt/apt.conf.d/10periodic
 
 apt update
 apt upgrade -y
+
+# have install tar ?
+
+# Install unzip
+sudo apt-get install -y unzip
