@@ -6,6 +6,7 @@ output-vagrant/
 output-virtualbox-iso/
 packer_cache/
 packer*
+terraform*
 
 variables.json
 .vagrant

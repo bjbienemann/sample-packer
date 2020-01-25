@@ -8,6 +8,10 @@
 
 Build vagrant image
 ```
+./packer build -only=vagrant template.json
+```
+or Virtualbox ISO
+```
 ./packer build -only=virtualbox-iso template.json
 ```
 
