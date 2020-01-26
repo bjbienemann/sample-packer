@@ -1,5 +1,7 @@
 {
     "aws_access_key": "",
     "aws_secret_key": "",
-    "aws_region": "sa-east-1"
+    "aws_region": "sa-east-1",
+    "digitalocean_api_token": "",
+    "digitalocean_region": "nyc3"
 }
