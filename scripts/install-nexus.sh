@@ -3,6 +3,8 @@
 # References
 # https://stackoverflow.com/questions/57028412/how-to-install-nexus-on-ubuntu-18-04
 
+sudo apt install policykit-1
+
 wget http://download.sonatype.com/nexus/3/nexus-3.20.1-01-unix.tar.gz -P /tmp
 
 sudo tar xf /tmp/nexus-3.20.1-01-unix.tar.gz -C /opt
@@ -31,8 +33,8 @@ sudo sed -i 's/#run_as_user=""/run_as_user="nexus"/' /opt/nexus/bin/nexus.rc
 sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
 
 # Runs as a Service
+# Usage: service nexus { console | start | stop | restart | status | dump }"
 sudo update-rc.d nexus defaults
-# service nexus status
 
 # Log in as a nexus user and start service
 # su - nexus
