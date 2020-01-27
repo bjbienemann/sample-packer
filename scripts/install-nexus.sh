@@ -3,8 +3,6 @@
 # References
 # https://stackoverflow.com/questions/57028412/how-to-install-nexus-on-ubuntu-18-04
 
-sudo apt install policykit-1
-
 wget http://download.sonatype.com/nexus/3/nexus-3.20.1-01-unix.tar.gz -P /tmp
 
 sudo tar xf /tmp/nexus-3.20.1-01-unix.tar.gz -C /opt

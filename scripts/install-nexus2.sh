@@ -3,6 +3,7 @@
 # References
 # https://help.sonatype.com/repomanager2/
 # https://itcloudnet.blogspot.com/2015/06/how-to-install-and-manage-sonatype.html
+# https://askubuntu.com/questions/930639/make-service-monit-possible-for-a-particular-user-to-start-without-prompting-for
 
 sudo apt install policykit-1
 
