@@ -102,12 +102,17 @@
         {
             "type": "shell",
             "script": "scripts/install-openjdk11.sh",
-            "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
         },
         {
             "type": "shell",
-            "script": "scripts/install-maven.sh",
-            "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+            "script": "scripts/install-postgresql-9.5.sh",
+            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install-sonarqube.sh",
+            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
         },
         {
             "type": "shell",

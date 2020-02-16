@@ -8,7 +8,9 @@ sudo apt update
 
 sudo apt install -y jenkins
 
+# Start and enable it to start automatically at boot time by running.
 sudo systemctl start jenkins
+sudo systemctl enable jenkins
 
 #Verify status jenkinhs service
 #sudo systemctl status jenkins

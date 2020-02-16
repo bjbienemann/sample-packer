@@ -5,7 +5,9 @@
 # https://itcloudnet.blogspot.com/2015/06/how-to-install-and-manage-sonatype.html
 # https://askubuntu.com/questions/930639/make-service-monit-possible-for-a-particular-user-to-start-without-prompting-for
 
-sudo apt install policykit-1
+# sudo apt install policykit-1
+
+# Depends on java 8
 
 wget -q http://www.sonatype.org/downloads/nexus-2.14.5-02-bundle.tar.gz -P /tmp
 
@@ -14,16 +16,26 @@ sudo tar xf /tmp/nexus-2.14.5-02-bundle.tar.gz -C /opt
 sudo ln -s /opt/nexus-2.14.5-02 /opt/nexus
 
 # Add user nexus
-sudo adduser --quiet --disabled-password --gecos "Sonatype Nexus" nexus
-echo "nexus:nexus123" | chpasswd
+# sudo adduser --quiet --disabled-password --gecos "Sonatype Nexus" nexus
+# echo "nexus:nexus123" | chpasswd
+sudo groupadd --system nexus
+sudo adduser \
+    --system \
+    --disabled-login \
+    --no-create-home \
+    --gecos '' \
+    --ingroup nexus \
+    --home /opt/nexus \
+    nexus
 
 # Add sudo permissions
 # sudo usermod -aG sudo nexus
 
 # Add nexus user to sudoers
-echo "nexus        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
+# echo "nexus        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
 
 # Change file and owner permission for nexus files
+sudo chown -R nexus:nexus /opt/nexus
 sudo chown -R nexus:nexus /opt/nexus-2.14.5-02
 sudo chown -R nexus:nexus /opt/sonatype-work
 

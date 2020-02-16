@@ -1,16 +1,23 @@
 [Unit]
-Description=SonarQube service
-After=syslog.target network.target
+Description=sonarqube
+After=network.target
 
 [Service]
-Type=forking
-
-ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start
-ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop
-
-User=root
-Group=root
+Type=simple
+User=sonar
+Group=sonar
+LimitNOFILE=infinity
+LimitMEMLOCK=infinity
+WorkingDirectory=/opt/sonarqube
+ExecStartPre=/bin/sh -c 'ulimit -a; sysctl fs.nr_open vm.max_map_count'
+ExecStart=/usr/bin/nohup \
+    /usr/bin/java \
+    -Djava.net.preferIPv4Stack=true \
+    -jar /opt/sonarqube/lib/sonar-application-8.1.0.31237.jar \
+    -Dsonar.log.console=true
+TimeoutStartSec=5
 Restart=always
+SuccessExitStatus=143
 
 [Install]
 WantedBy=multi-user.target
