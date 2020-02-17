@@ -13,8 +13,8 @@ sudo unzip -q /tmp/sonarqube-8.1.0.31237.zip -d /opt
 # sudo mv /tmp/sonarqube-8.1.0.31237/* /opt/sonarqube/
 sudo ln -s /opt/sonarqube-8.1.0.31237 /opt/sonarqube
 
-# echo "sonar:sonar123" | sudo chpasswd
 # sudo adduser --quiet --disabled-password --gecos "SonarQube" sonar
+# echo "sonar:sonar123" | sudo chpasswd
 sudo groupadd --system sonar
 sudo adduser \
     --system \

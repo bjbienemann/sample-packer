@@ -124,7 +124,7 @@
         {
             "type": "vagrant",
             "compression_level": "8",
-            "output": "output/ubuntu-18.04.3.box"
+            "output": "output/sonarqube-8.1.0.31237.box"
         }
     ]
 }

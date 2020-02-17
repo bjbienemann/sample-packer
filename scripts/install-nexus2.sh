@@ -5,7 +5,7 @@
 # https://itcloudnet.blogspot.com/2015/06/how-to-install-and-manage-sonatype.html
 # https://askubuntu.com/questions/930639/make-service-monit-possible-for-a-particular-user-to-start-without-prompting-for
 
-# sudo apt install policykit-1
+# sudo apt install -y policykit-1
 
 # Depends on java 8
 
@@ -54,3 +54,12 @@ sudo update-rc.d nexus defaults
 
 # View nexus logs
 # tail -f /usr/local/nexus/logs/wrapper.log
+
+sudo bash -c "cat > /etc/polkit-1/localauthority/50-local.d/nexus.pkla << 'EOF'
+[nexus service]
+Identity=unix-user:nexus
+Action=org.freedesktop.systemd1.manage-units
+ResultAny=yes
+ResultInactive=yes
+ResultActive=yes
+EOF"

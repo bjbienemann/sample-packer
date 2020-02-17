@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   # config.vm.box = "nexus-2.14.5-02"
+  # config.vm.box = "sonarqube-8.1.0.31237"
   config.vm.box = "ubuntu-18.04.3"
 
   # Disable automatic box update checking. If you disable this, then
