@@ -6,6 +6,7 @@ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`
 
 sudo apt-get update
 
+# See version in apt-cache and implement version condition
 # Install PostgreSQL server
 sudo apt-get -y install postgresql-9.5 postgresql-contrib-9.5
 
